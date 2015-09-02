@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Calc</title>
+<meta charset='utf-8'>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/> <!--320-->
+<style>
+body {
+background-color: darkgrey;
+margin: 0px auto;
+}
+p {
+color:black;
+margin:0px;
+width:30px;
+}
+button {
+height:40px;
+width:40px;
+border-radius:5px;
+background-color:white;
+}
+button:hover {
+background-color:#FFFADB;
+color:red;
+}
+input {
+background-color:lightgreen;
+border-radius:5px;
+margin-bottom:10px;
+width:312px;
+font-size:20px;
+text-align:right;
+}
+div {
+padding:10px;
+margin-left:12px;
+}
+#rezultat {
+margin-left:5px;
+width:50px;
+text-align:right;	
+}
+</style>
+</head>
+<body>	
+<input id="rownanie">
+<div>
+	<p id="rp">=</p>
+	<script>
+	var rownanie;
+	var zm1;
+	var zm2;
+	var zm3;
+	var elem = document.getElementById("rownanie");
+	var rp = document.getElementById("rp");
+	elem.value = null;
+	rownanie = null;
+	var schowek;
+		function egzo (i) {
+			switch (i) {
+			case 0:
+				if (elem.value == null) {
+				elem.value = parseFloat(0);
+					}
+				else {
+				elem.value = elem.value + "0";	
+				}
+				break;	
+			case 1:
+				if (elem.value == null) {
+				elem.value = parseFloat(1);
+						}
+					else {
+				elem.value = elem.value + "1";
+					}
+				break;	
+			case 2:
+				if (elem.value == null) {
+				elem.value = parseFloat(2);
+						}
+					else {
+				elem.value = elem.value + "2";
+					}
+				break;			
+			case 3:
+				if (elem.value == null) {
+				elem.value = parseFloat(3);
+						}
+					else {
+				elem.value = elem.value + "3";
+					}
+				break;
+			case 4:
+				if (elem.value == null) {
+				elem.value = parseFloat(4);
+						}
+					else {
+				elem.value = elem.value + "4";
+					}
+				break;
+			case 5:
+				if (elem.value == null) {
+				elem.value = parseFloat(5);
+						}
+					else {
+				elem.value = elem.value + "5";
+					}
+				break;
+			case 6:
+				if (elem.value == null) {
+				elem.value = parseFloat(6);
+						}
+					else {
+				elem.value = elem.value + "6";
+					}
+				break;
+			case 7:
+				if (elem.value == null) {
+				elem.value = parseFloat(7);
+						}
+					else {
+				elem.value = elem.value + "7";
+					}
+				break;	
+			case 8:
+				if (elem.value == null) {
+				elem.value = parseFloat(8);
+						}
+					else {
+				elem.value = elem.value + "8";
+					}
+				break;
+			case 9:
+				if (elem.value == null) {
+				elem.value = parseFloat(9);
+						}
+					else {
+				elem.value = elem.value + "9";
+					}
+				break;					
+			case 10:
+				elem.value = null;
+				zm1 = null;
+				rp.innerHTML = "=";
+				break;	
+			case 11:
+				if (rownanie == null) {
+				zm1 = parseFloat(elem.value);
+				}
+				elem.value = null;
+				rownanie = "dzielenie";
+				return [zm1, rownanie];
+				break;		
+			case 12: 
+				if (rownanie == null) {
+					zm1 = parseFloat(elem.value);
+					}
+				elem.value = null;
+				rownanie = "mnozenie";	
+				return [zm1, rownanie];
+				break;
+			case 13:	
+				if (zm1 == null) {
+					elem.value = "-";
+					zm1 = "-" + elem.value;
+					zm3 = parseFloat(zm1);
+					}
+				else {	 
+				if (rownanie == null) {
+					zm1 = parseFloat(elem.value);
+					zm3 = parseFloat(elem.value);
+					}
+				elem.value = null;
+				rownanie = "odejmowanie";
+				return [zm1, zm3, rownanie];
+				};
+				break;
+			case 14: 
+				if (rownanie == null) {
+					zm1 = parseFloat(elem.value);
+					}
+				elem.value = null;
+				rownanie = "dodawanie";
+				return [zm1, rownanie];
+				break;
+			case 15: 
+				zm2 = parseFloat(elem.value);		
+				schowek = zm1;		
+				if (rownanie == "dzielenie"){
+					elem.value = zm1 / zm2;	
+					rp.innerHTML = zm1 + "/" + zm2;
+					rownanie = null;
+					}
+				if (rownanie == "dodawanie"){
+					elem.value = zm1 + zm2;
+					rp.innerHTML = zm1 + "+" + zm2;
+					rownanie = null;
+					}
+				if (rownanie == "odejmowanie"){
+					elem.value = zm1 - zm2;
+					rp.innerHTML = zm1 + "-" + zm3;
+					rownanie = null;
+					}
+				if (rownanie == "mnozenie"){
+					elem.value = zm1 * zm2;
+					rp.innerHTML = zm1 + "x" + zm2;
+					rownanie = null;
+					}
+				if (rownanie == "potega"){
+					elem.value = Math.pow(zm1, zm2);
+					rp.innerHTML = zm1 + "^" + zm2;
+					rownanie = null;
+					}
+				podswietl("rowne");
+				break;
+			case 16:
+				schowek = elem.value;
+				elem.value = parseFloat(schowek);
+				elem.value = Math.log(schowek);
+				rp.innerHTML = "ln(" + schowek +")";
+				break;
+			case 17:
+				schowek = elem.value;
+				elem.value = parseFloat(schowek);
+				elem.value = Math.sin(schowek);
+				rp.innerHTML = "sin(" + schowek +")";
+				break;
+			case 18:
+				schowek = parseFloat(schowek);
+				elem.value = schowek;
+				rp.innerHTML = "=";
+				break;
+			case 19:
+				schowek = elem.value;
+				elem.value = parseFloat(schowek);
+				elem.value = Math.tan(schowek);
+				rp.innerHTML = "tangent(" + schowek +")";
+				break;
+			case 20: 
+				elem.value = elem.value + ".";
+				break;	
+			case 21:
+				schowek = elem.value;	
+				elem.value = parseFloat(elem.value);
+				elem.value = Math.sqrt(elem.value);
+				rp.innerHTML = "√" + schowek;
+				return schowek;
+				break;	
+			case 22:
+				if (rownanie == null) {
+				zm1 = parseFloat(elem.value);
+				}
+				elem.value = null;
+				rownanie = "potega";
+				return [zm1, rownanie];
+				break;
+			case 23:
+				if (rownanie == null) {
+				zm1 = parseFloat(elem.value);
+				}
+				elem.value = parseFloat(elem.value);
+				elem.value = Math.exp(elem.value);
+				rp.innerHTML = "e^" + zm1;
+				return zm1;
+				break;
+			case 24:
+				schowek = elem.value;
+				elem.value = parseFloat(schowek);
+				elem.value = Math.asin(schowek);
+				rp.innerHTML = "arcsine(" + schowek + ")";
+				break;
+			case 25:
+				schowek = elem.value;
+				elem.value = parseFloat(elem.value);
+				elem.value = Math.acos(elem.value);
+				rp.innerHTML = "arccosine(" + schowek + ")";
+				break;
+			case 26:
+				schowek = elem.value;
+				elem.value = parseFloat(elem.value);
+				elem.value = Math.cos(elem.value);
+				rp.innerHTML = "cosine(" + schowek + ")";
+				break;
+			case 27:
+				schowek = elem.value;
+				elem.value = parseFloat(elem.value);
+				elem.value = Math.atan(elem.value);
+				rp.innerHTML = "arctangent(" + schowek + ")";
+				break;
+			case 28:
+				elem.value = Math.PI;
+				break;
+			case 29:
+				elem.value = Math.E;
+				break;
+			case 30:
+				elem.value = Math.abs(elem.value);
+				break;
+			case 31:
+				elem.value = null;
+				break;
+
+			return rownanie;
+			}
+		}
+		
+	</script>
+<br />
+	<button onclick="egzo(28)">π</button><button onclick="egzo(29)">e</button><button onclick="egzo(30)">abs</button>
+	<button id="dzielenie" onclick="egzo(23)">E^x</button><button onclick="egzo(10)">CE</button><button onclick="egzo(31)">C</button><button onclick="egzo(18)">COF</button><br />
+	<button onclick="egzo(7)">7</button><button onclick="egzo(8)">8</button><button onclick="egzo(9)">9</button>
+		<button onclick="egzo(11)">/</button><button  onclick="egzo(16)">ln</button><button onclick="egzo(19)">tan</button><button onclick="egzo(27)">atan</button>
+	<br />
+	<button onclick="egzo(4)">4</button><button onclick="egzo(5)">5</button><button onclick="egzo(6)">6</button>
+	<button id="mnozenie" onclick="egzo(12)">*</button><button onclick="egzo(21)">√</button><button onclick="egzo(26)">cos</button><button onclick="egzo(25)">acos</button><br />
+	<button onclick="egzo(1)">1</button><button onclick="egzo(2)">2</button><button onclick="egzo(3)">3</button>
+	<button id="odejmowanie" onclick="egzo(13)">-</button><button onclick="egzo(22)">a^x</button><button onclick="egzo(17)">sin</button><button onclick="egzo(24)">asin</button><br />
+	<button style="width:80px" onclick="egzo(0)">0</button><button onclick="egzo(20)">.</button>
+	<button id="dodawanie" onclick="egzo(14)">+</button><button onclick="egzo(15)" style="width:120px; background-color:lightgrey;">=</button><br />
+	<br />
+	</div>
+	<div>
+	
+	</div>
+</body>
+</html>
