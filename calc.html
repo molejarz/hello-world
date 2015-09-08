@@ -49,18 +49,18 @@ text-align:right;
 	<p id="rp">=</p>
 	<script>
 	var rownanie;
-	var zm1;
+	var zm1 = 0;
 	var zm2;
-	var zm3;
+	var uj;
 	var elem = document.getElementById("rownanie");
 	var rp = document.getElementById("rp");
-	elem.value = null;
+	elem.value = 0;
 	rownanie = null;
 	var schowek;
 		function egzo (i) {
 			switch (i) {
 			case 0:
-				if (elem.value == null) {
+				if ((elem.value == null) || (elem.value == '0')) {
 				elem.value = parseFloat(0);
 					}
 				else {
@@ -68,7 +68,7 @@ text-align:right;
 				}
 				break;	
 			case 1:
-				if (elem.value == null) {
+				if ((elem.value == null) || (elem.value == '0')) {
 				elem.value = parseFloat(1);
 						}
 					else {
@@ -76,7 +76,7 @@ text-align:right;
 					}
 				break;	
 			case 2:
-				if (elem.value == null) {
+				if ((elem.value == null) || (elem.value == '0')) {
 				elem.value = parseFloat(2);
 						}
 					else {
@@ -84,7 +84,7 @@ text-align:right;
 					}
 				break;			
 			case 3:
-				if (elem.value == null) {
+				if ((elem.value == null) || (elem.value == '0')) {
 				elem.value = parseFloat(3);
 						}
 					else {
@@ -92,7 +92,7 @@ text-align:right;
 					}
 				break;
 			case 4:
-				if (elem.value == null) {
+				if ((elem.value == null) || (elem.value == '0')) {
 				elem.value = parseFloat(4);
 						}
 					else {
@@ -100,7 +100,7 @@ text-align:right;
 					}
 				break;
 			case 5:
-				if (elem.value == null) {
+				if ((elem.value == null) || (elem.value == '0')) {
 				elem.value = parseFloat(5);
 						}
 					else {
@@ -108,7 +108,7 @@ text-align:right;
 					}
 				break;
 			case 6:
-				if (elem.value == null) {
+				if ((elem.value == null) || (elem.value == '0')) {
 				elem.value = parseFloat(6);
 						}
 					else {
@@ -116,7 +116,7 @@ text-align:right;
 					}
 				break;
 			case 7:
-				if (elem.value == null) {
+				if ((elem.value == null) || (elem.value == '0')) {
 				elem.value = parseFloat(7);
 						}
 					else {
@@ -124,7 +124,7 @@ text-align:right;
 					}
 				break;	
 			case 8:
-				if (elem.value == null) {
+				if ((elem.value == null) || (elem.value == '0')) {
 				elem.value = parseFloat(8);
 						}
 					else {
@@ -132,7 +132,7 @@ text-align:right;
 					}
 				break;
 			case 9:
-				if (elem.value == null) {
+				if ((elem.value == null) || (elem.value == '0')) {
 				elem.value = parseFloat(9);
 						}
 					else {
@@ -140,8 +140,8 @@ text-align:right;
 					}
 				break;					
 			case 10:
-				elem.value = null;
-				zm1 = null;
+				elem.value = 0;
+				zm1 = 0;
 				rp.innerHTML = "=";
 				break;	
 			case 11:
@@ -161,20 +161,25 @@ text-align:right;
 				return [zm1, rownanie];
 				break;
 			case 13:	
-				if (zm1 == null) {
-					elem.value = "-";
-					zm1 = "-" + elem.value;
-					zm3 = parseFloat(zm1);
-					}
-				else {	 
+				if (elem.value == null) {
+				elem.value = "-";
+				set = "uj";
+				} else
+					set = null; 
+					{
 				if (rownanie == null) {
 					zm1 = parseFloat(elem.value);
-					zm3 = parseFloat(elem.value);
 					}
+				if (set != "uj") {
 				elem.value = null;
+					}
+				else {
+					elem.value = null;
+					}
 				rownanie = "odejmowanie";
-				return [zm1, zm3, rownanie];
-				};
+				set = null;
+				return [zm1, rownanie];
+				}
 				break;
 			case 14: 
 				if (rownanie == null) {
@@ -199,7 +204,7 @@ text-align:right;
 					}
 				if (rownanie == "odejmowanie"){
 					elem.value = zm1 - zm2;
-					rp.innerHTML = zm1 + "-" + zm3;
+					rp.innerHTML = zm1 + "-" + zm2;
 					rownanie = null;
 					}
 				if (rownanie == "mnozenie"){
@@ -308,7 +313,7 @@ text-align:right;
 	</script>
 <br />
 	<button onclick="egzo(28)">π</button><button onclick="egzo(29)">e</button><button onclick="egzo(30)">abs</button>
-	<button id="dzielenie" onclick="egzo(23)">E^x</button><button onclick="egzo(10)">CE</button><button onclick="egzo(31)">C</button><button onclick="egzo(18)">COF</button><br />
+	<button id="dzielenie" onclick="egzo(23)">E^x</button><button onclick="egzo(10)">CE</button><button onclick="egzo(31)">C</button><button onclick="egzo(18)">↩</button><br />
 	<button onclick="egzo(7)">7</button><button onclick="egzo(8)">8</button><button onclick="egzo(9)">9</button>
 		<button onclick="egzo(11)">/</button><button  onclick="egzo(16)">ln</button><button onclick="egzo(19)">tan</button><button onclick="egzo(27)">atan</button>
 	<br />
